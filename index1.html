@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>j.m.c phone accessories – Premium Phones & Accessories</title>
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0b0f1c; /* deep dark base */
+      color: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Color variables */
+    :root {
+      --cobalt: #0047ab;
+      --dark-blue: #0a1a3a;
+      --bright-blue: #3a86ff;
+      --purple: #8338ec;
+      --white: #ffffff;
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Typography */
+    h1, h2, h3 {
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      background: linear-gradient(135deg, var(--bright-blue), var(--purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--bright-blue), var(--purple));
+      border-radius: 2px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--bright-blue), var(--purple));
+      color: white;
+      box-shadow: 0 8px 20px rgba(58, 134, 255, 0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(58, 134, 255, 0.5);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--bright-blue);
+      color: var(--bright-blue);
+    }
+    .btn-outline:hover {
+      background: var(--bright-blue);
+      color: white;
+      transform: translateY(-3px);
+    }
+    .btn-wa {
+      background: #25D366;
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      font-size: 0.95rem;
+    }
+    .btn-wa:hover {
+      background: #128C7E;
+      transform: translateY(-3px);
+    }
+
+    /* Header & Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(10, 26, 58, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--glass-border);
+      z-index: 1000;
+      padding: 15px 0;
+      transition: 0.3s;
+    }
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: white;
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+    .logo span {
+      color: var(--bright-blue);
+    }
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+    .nav-menu a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      padding: 5px 0;
+      transition: 0.3s;
+    }
+    .nav-menu a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--bright-blue), var(--purple));
+      transition: 0.3s;
+    }
+    .nav-menu a:hover {
+      color: var(--bright-blue);
+    }
+    .nav-menu a:hover::after {
+      width: 100%;
+    }
+    .nav-menu a.active {
+      color: var(--bright-blue);
+    }
+    .nav-menu a.active::after {
+      width: 100%;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      width: 30px;
+      height: 24px;
+      justify-content: space-between;
+    }
+    .hamburger span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background: white;
+      border-radius: 3px;
+      transition: 0.3s;
+    }
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(10px) rotate(45deg);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-11px) rotate(-45deg);
+    }
+
+    /* Main content sections */
+    .page {
+      display: none;
+      padding-top: 100px;
+      min-height: calc(100vh - 300px);
+      animation: fadeIn 0.5s ease;
+    }
+    .page.active-page {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hero */
+    .hero {
+      padding: 60px 0 80px;
+      background: radial-gradient(circle at 70% 30%, rgba(58, 134, 255, 0.15), transparent 50%);
+    }
+    .hero-content {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      flex-wrap: wrap;
+    }
+    .hero-text {
+      flex: 1 1 400px;
+    }
+    .hero-text p {
+      font-size: 1.2rem;
+      color: #ccc;
+      margin: 20px 0 30px;
+      max-width: 600px;
+    }
+    .hero-visual {
+      flex: 1 1 400px;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+    .phone-stack {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .phone-card {
+      background: linear-gradient(145deg, #1e2a47, #0f1a2f);
+      border-radius: 30px;
+      padding: 20px 15px;
+      box-shadow: 0 25px 40px -10px rgba(0,0,0,0.5);
+      border: 1px solid var(--glass-border);
+      transition: 0.3s;
+      width: 160px;
+      text-align: center;
+      animation: float 6s ease-in-out infinite;
+    }
+    .phone-card:nth-child(2) { animation-delay: 0.3s; }
+    .phone-card:nth-child(3) { animation-delay: 0.6s; }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    .phone-card i {
+      font-size: 4rem;
+      color: var(--bright-blue);
+      margin-bottom: 10px;
+    }
+    .phone-card p {
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--bright-blue), var(--purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* Featured Products (on home) */
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+    .product-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 25px 20px;
+      text-align: center;
+      transition: 0.3s;
+    }
+    .product-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--bright-blue);
+      box-shadow: 0 20px 30px -10px var(--bright-blue);
+    }
+    .product-img {
+      font-size: 5rem;
+      color: var(--bright-blue);
+      margin-bottom: 15px;
+    }
+    .product-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+    .product-price {
+      color: var(--purple);
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin: 15px 0;
+    }
+    .btn-wa-small {
+      background: #25D366;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+    .btn-wa-small:hover {
+      background: #128C7E;
+      transform: scale(1.05);
+    }
+
+    /* Products page grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 30px;
+      margin: 50px 0;
+    }
+
+    /* About page */
+    .about-content {
+      display: flex;
+      gap: 50px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .about-text p {
+      margin: 20px 0;
+      color: #ccc;
+    }
+    .stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 30px;
+    }
+    .stat-item h3 {
+      font-size: 2.5rem;
+      color: var(--bright-blue);
+    }
+
+    /* Contact page */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      margin: 50px 0;
+    }
+    .contact-info p {
+      margin: 15px 0;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .contact-info i {
+      font-size: 1.5rem;
+      color: var(--bright-blue);
+      width: 30px;
+    }
+    .contact-info a {
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .contact-info a:hover {
+      color: var(--bright-blue);
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 20px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 10px;
+      color: white;
+      font-family: inherit;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--bright-blue);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark-blue);
+      padding: 60px 0 20px;
+      margin-top: 80px;
+      border-top: 1px solid var(--glass-border);
+    }
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-col h4 {
+      margin-bottom: 20px;
+      color: white;
+    }
+    .footer-col ul {
+      list-style: none;
+    }
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+    .footer-col ul li a {
+      color: #aaa;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .footer-col ul li a:hover {
+      color: var(--bright-blue);
+      padding-left: 5px;
+    }
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      color: white;
+      transition: 0.3s;
+    }
+    .social-links a:hover {
+      background: var(--bright-blue);
+      transform: translateY(-3px);
+    }
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+      .nav-menu {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: var(--dark-blue);
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 0;
+        gap: 20px;
+        transform: translateY(-150%);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s;
+        border-bottom: 1px solid var(--glass-border);
+        backdrop-filter: blur(10px);
+      }
+      .nav-menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      h2:after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+    /* Click effect */
+    a, button {
+      -webkit-tap-highlight-color: transparent;
+    }
+    a:active, button:active {
+      transform: scale(0.97);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <a href="#" class="logo">j.m.c <span>phone accessories</span></a>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#home" class="nav-link active" data-page="home">Home</a></li>
+        <li><a href="#products" class="nav-link" data-page="products">Products</a></li>
+        <li><a href="#about" class="nav-link" data-page="about">About</a></li>
+        <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOME PAGE -->
+    <section id="home" class="page active-page">
+      <div class="hero">
+        <div class="container hero-content">
+          <div class="hero-text">
+            <h1>Premium Phones & Accessories</h1>
+            <p>Discover the latest smartphones and high‑quality accessories at j.m.c. We bring you the best tech at unbeatable prices. Shop with confidence and enjoy fast delivery.</p>
+            <a href="#products" class="btn btn-primary" data-page="products">Browse Products</a>
+            <a href="https://wa.me/2347068583984" class="btn btn-outline" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+          </div>
+          <div class="hero-visual">
+            <div class="phone-stack">
+              <div class="phone-card"><i class="fas fa-mobile-alt"></i><p>iPhone 15 Pro</p></div>
+              <div class="phone-card"><i class="fas fa-mobile-alt"></i><p>Samsung S23</p></div>
+              <div class="phone-card"><i class="fas fa-mobile-alt"></i><p>Pixel 8</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <h2>Featured Products</h2>
+        <div class="featured-grid" id="featured-products">
+          <!-- Products will be injected by JS -->
+        </div>
+        <div style="text-align: center; margin: 40px 0;">
+          <a href="#products" class="btn btn-primary" data-page="products">View All Products</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS PAGE -->
+    <section id="products" class="page">
+      <div class="container">
+        <h2>All Products</h2>
+        <div class="products-grid" id="all-products">
+          <!-- Products injected by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT PAGE -->
+    <section id="about" class="page">
+      <div class="container">
+        <div class="about-content">
+          <div class="about-text">
+            <h2>About j.m.c phone accessories</h2>
+            <p>We are a passionate team dedicated to providing top‑quality mobile phones and accessories. Founded in 2020, we have helped hundreds of customers find the perfect device.</p>
+            <p>Our mission is to combine the latest technology with exceptional customer service. Every product is carefully selected to ensure quality and reliability.</p>
+            <div class="stats">
+              <div class="stat-item"><h3>500+</h3><p>Happy Clients</p></div>
+              <div class="stat-item"><h3>50+</h3><p>Products</p></div>
+              <div class="stat-item"><h3>24/7</h3><p>Support</p></div>
+            </div>
+          </div>
+          <div class="about-image">
+            <!-- Placeholder for team/store image -->
+            <i class="fas fa-store" style="font-size: 15rem; color: var(--bright-blue); opacity: 0.3;"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT PAGE -->
+    <section id="contact" class="page">
+      <div class="container">
+        <h2>Contact Us</h2>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <p><i class="fas fa-phone-alt"></i> <a href="tel:+2347068583984">+234 706 858 3984</a></p>
+            <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/2347068583984" target="_blank">+234 706 858 3984 (WhatsApp)</a></p>
+            <p><i class="fab fa-facebook"></i> <a href="https://www.facebook.com/share/1GKWQ1UWcj/" target="_blank">facebook.com/jmc.phones</a></p>
+            <p><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</p>
+            <p><i class="fas fa-envelope"></i> info@jmcphones.com</p>
+            <div class="social-links" style="justify-content: flex-start;">
+              <a href="https://www.facebook.com/share/1GKWQ1UWcj/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://wa.me/2347068583984" target="_blank"><i class="fab fa-whatsapp"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+          <div class="contact-form">
+            <form id="quickContact">
+              <input type="text" placeholder="Your Name" required>
+              <input type="email" placeholder="Your Email" required>
+              <textarea rows="5" placeholder="Your Message"></textarea>
+              <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col">
+          <h4>j.m.c phone accessories</h4>
+          <p>Your trusted source for premium phones and accessories.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home" class="nav-link" data-page="home">Home</a></li>
+            <li><a href="#products" class="nav-link" data-page="products">Products</a></li>
+            <li><a href="#about" class="nav-link" data-page="about">About</a></li>
+            <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><i class="fas fa-phone"></i> +234 706 858 3984</li>
+            <li><i class="fab fa-whatsapp"></i> +234 706 858 3984</li>
+            <li><i class="fas fa-envelope"></i> info@jmcphones.com</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Follow Us</h4>
+          <div class="social-links">
+            <a href="https://www.facebook.com/share/1GKWQ1UWcj/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2025 j.m.c phone accessories. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp floating button -->
+  <a href="https://wa.me/2347068583984" class="btn-wa" style="position: fixed; bottom: 30px; right: 30px; z-index: 99; border-radius: 50px; padding: 15px 25px; box-shadow: 0 8px 20px rgba(0,0,0,0.3);" target="_blank">
+    <i class="fab fa-whatsapp"></i> Chat with us
+  </a>
+
+  <script>
+    // Product data (replace with your own images and details)
+    const products = [
+      { name: "iPhone 15 Pro", price: "₦850,000", img: "fas fa-mobile-alt", desc: "6.1\" Super Retina, A17 Pro" },
+      { name: "Samsung Galaxy S23 Ultra", price: "₦980,000", img: "fas fa-mobile-alt", desc: "200MP camera, S Pen" },
+      { name: "Google Pixel 8 Pro", price: "₦720,000", img: "fas fa-mobile-alt", desc: "Tensor G3, 7 years updates" },
+      { name: "OnePlus 14", price: "₦650,000", img: "fas fa-mobile-alt", desc: "150W charging, 120Hz display" },
+      { name: "Xiaomi 13T Pro", price: "₦550,000", img: "fas fa-mobile-alt",
