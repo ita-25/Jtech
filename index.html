@@ -680,11 +680,118 @@
     <i class="fab fa-whatsapp"></i> Chat with us
   </a>
 
-  <script>
+    <script>
     // Product data (replace with your own images and details)
     const products = [
       { name: "iPhone 15 Pro", price: "₦850,000", img: "fas fa-mobile-alt", desc: "6.1\" Super Retina, A17 Pro" },
       { name: "Samsung Galaxy S23 Ultra", price: "₦980,000", img: "fas fa-mobile-alt", desc: "200MP camera, S Pen" },
       { name: "Google Pixel 8 Pro", price: "₦720,000", img: "fas fa-mobile-alt", desc: "Tensor G3, 7 years updates" },
       { name: "OnePlus 14", price: "₦650,000", img: "fas fa-mobile-alt", desc: "150W charging, 120Hz display" },
-      { name: "Xiaomi 13T Pro", price: "₦550,000", img: "fas fa-mobile-alt",
+      { name: "Xiaomi 13T Pro", price: "₦550,000", img: "fas fa-mobile-alt", desc: "Leica camera, 120W fast charge" },
+      { name: "Tecno Camon 20", price: "₦220,000", img: "fas fa-mobile-alt", desc: "64MP camera, 5000mAh battery" },
+      { name: "Infinix Note 30", price: "₦180,000", img: "fas fa-mobile-alt", desc: "108MP main, 120Hz display" },
+      { name: "AirPods Pro 2", price: "₦120,000", img: "fas fa-headphones", desc: "Active noise cancellation" }
+    ];
+
+    // Render products on home (first 4)
+    function renderFeatured() {
+      const featured = products.slice(0, 4);
+      const container = document.getElementById('featured-products');
+      container.innerHTML = featured.map(p => productCard(p)).join('');
+    }
+
+    // Render all products
+    function renderAllProducts() {
+      const container = document.getElementById('all-products');
+      container.innerHTML = products.map(p => productCard(p)).join('');
+    }
+
+    // Product card HTML with WhatsApp order button
+    function productCard(p) {
+      const waMsg = encodeURIComponent(`Hello, I'm interested in *${p.name}* (${p.desc}) at ${p.price}. Is it available?`);
+      return `
+        <div class="product-card">
+          <div class="product-img"><i class="${p.img}"></i></div>
+          <h3>${p.name}</h3>
+          <p>${p.desc}</p>
+          <div class="product-price">${p.price}</div>
+          <a href="https://wa.me/2347068583984?text=${waMsg}" target="_blank" class="btn-wa-small"><i class="fab fa-whatsapp"></i> Order via WhatsApp</a>
+        </div>
+      `;
+    }
+
+    // Page navigation
+    const pages = document.querySelectorAll('.page');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+
+    function showPage(pageId) {
+      pages.forEach(p => p.classList.remove('active-page'));
+      document.getElementById(pageId).classList.add('active-page');
+      navLinks.forEach(link => link.classList.remove('active'));
+      document.querySelector(`.nav-link[data-page="${pageId}"]`).classList.add('active');
+      // Close mobile menu
+      hamburger.classList.remove('active');
+      navMenu.classList.remove('active');
+      // Update URL hash (without jumping)
+      history.pushState(null, null, `#${pageId}`);
+    }
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const pageId = link.getAttribute('data-page');
+        showPage(pageId);
+      });
+    });
+
+    // Handle initial load / hash
+    function handleHash() {
+      const hash = window.location.hash.substring(1) || 'home';
+      if (['home','products','about','contact'].includes(hash)) {
+        showPage(hash);
+      } else {
+        showPage('home');
+      }
+    }
+    window.addEventListener('load', handleHash);
+    window.addEventListener('hashchange', handleHash);
+
+    // Hamburger toggle
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+
+    // Close menu when clicking a link (mobile)
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      });
+    });
+
+    // Contact form submission (simple alert)
+    document.getElementById('quickContact').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Thank you for contacting us! We will reply soon via WhatsApp or email.');
+      e.target.reset();
+    });
+
+    // Initialize products
+    renderFeatured();
+    renderAllProducts();
+
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.style.background = 'rgba(10, 26, 58, 0.98)';
+      } else {
+        header.style.background = 'rgba(10, 26, 58, 0.95)';
+      }
+    });
+  </script>
+</body>
+</html>
